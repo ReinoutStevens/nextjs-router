@@ -5,7 +5,13 @@ export default function Home() {
   const router = useRouter();
 
   const brokenClick = () => {
-    router.push('http://localhost.com:3000/foo'); // note the .com part
+    // note the .com part
+    // localhost doesnt reproduce the error though, as the router will include the :3000
+    // in production example.com vs example.com.br does reproduce the error
+
+    // in prepareUrlAs the offending line is
+    //     const hrefHadOrigin = resolvedHref.startsWith(origin);
+    router.push('http://localhost.com:3000/foo'); 
   }
 
   const workingClick = () => {
